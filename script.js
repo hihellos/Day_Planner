@@ -24,5 +24,5 @@ $( document ).ready(function() {
 // THEN the saved events persist
 
 $("#date").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
-
+console.log(moment());
 });
