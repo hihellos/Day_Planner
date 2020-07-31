@@ -37,25 +37,30 @@ var update = setInterval( function(){
     
 // ]
 
-var rowDiv = $("<div class='row'>");
+for ( var hour = 9; hour < 18; hour++) {
+    var rowDiv = $("<div class='row'>");
+    rowDiv.attr("row-number", [hour]);
 
-var colOne = $("<div class='col-sm-1'>");
-var colTwo = $("<div class='col-sm-10'>");
-var colThree = $("<div class = 'col-sm-2' + 'button'>");
+    var colOne = $("<div class='col-sm-1'>");
+    var colTwo = $("<div class='col-sm-10'>");
+    var colThree = $("<div class = 'col-sm-2' + 'button'>");
 
-$(".container").append(rowDiv);
-rowDiv.append(colOne, colTwo, colThree);
+    $(".container").append(rowDiv);
+    rowDiv.append(colOne, colTwo, colThree);
+}
 
 //
 
 var saveBtn = $("<button class='save-btn'>Save Button</button>");
 $(".col-sm-2").append(saveBtn);
 
-var toDoInput = $("<div id = 'input-form'>");
-var inputArea = $("<div id = 'todo-input'>Input input input</div>");
 
-$("#input-form").append(inputArea);
-$(".col-sm-10").append(toDoInput);
+
+// var toDoInput = $("<div id = 'input-form'>");
+// var inputArea = $("<div id = 'todo-input'>Input input input</div>");
+
+// $("#input-form").append(inputArea);
+// $(".col-sm-10").append(toDoInput);
 
 // for loop to dynamically create activity row, with time col-1, activity col-9, savebutton col-2
 // needs to loop through time array 9am-5pm to put in 1st col of each row
