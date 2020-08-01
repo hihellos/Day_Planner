@@ -22,10 +22,8 @@ console.log("duration: " + moment.duration(60, "minutes").asHours());
 
 for (var hour = 9; hour <18; hour++) {
     var rowDiv = $("<div class='row'>")
-    // .attr("value", hour);
 
     var colOne = $("<div class= 'col-md-2'><p class='hourLabel'>")
-    // .attr("value", hour);
     if (hour < 12) {
         colOne.text([hour] + ":00 am");
     } 
@@ -36,7 +34,6 @@ for (var hour = 9; hour <18; hour++) {
         colOne.text([hour]-12 + ":00 pm")
     }
     var colTwo = $("<div class= 'col-md-8 justify-content-center' + 'taskInput'></div>")
-    // .attr("data-time", dataTime);
     var colThree = $("<div class = 'col-md-1'><p class='button'>");
     
     rowDiv.append(colOne, colTwo, colThree);
@@ -61,40 +58,30 @@ if (hour > currentTime) {
     $(".col-md-8").attr("style", "background-color: #DDE4E0");
 }
 
-// WHEN I click the save button for that timeblock
-// THEN the text for that event is saved in local storage
-// var user
+// The text for that event is saved in local storage, on page refresh the saved event persists
+var userInputField = $("#dataTime")
 
-// renderLastSaved();
+renderLastSaved();
 
-// function renderLastSaved() {
-//     var toDoField = localStorage.getItem("text");
+function renderLastSaved() {
+    var text = localStorage.getItem("text");
     
-//     if (!toDoField) {
-//         return;
-//     }
+    userInputField.textContent = text;
+}
 
-//     toDoInputField.textContent = text;
-// }
-// // click button to save
-// saveButton.on("click", function () {
-//     event.preventDefault();
+// Click button to save
+$(".save-btn").on("click", function(event) {
+    event.preventDefault();
+    
+    var text = $(".todo-input").val();
 
-//     var text = $("MAKE INDIVIDUAL IDS FOR EACH INPUT FIELD?").value;
-
-//     if (text ==="") {
-//         return;
-//     } else {
-//         animate button function?
-
-//         localStorage.setItem("text", );
-//         renderLastSaved;
-//     }
-// });
-
-// WHEN I refresh the page
-// THEN the saved events persist
-
+    if (text === "") {
+        console.log("No entry");
+    } else {
+        localStorage.setItem("text", text);
+        renderLastSaved();
+    }
+});
 
 });
 
