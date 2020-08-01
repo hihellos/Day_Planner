@@ -1,7 +1,7 @@
 .jumbotron {
     padding: 2%;
     background-color: transparent;
-    background-image: linear-gradient(to bottom, #D4DEED, white, white);
+    background-image: linear-gradient(to bottom, #FBF0DA, white);
 }
 
 #input {
