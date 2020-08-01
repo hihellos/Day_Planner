@@ -1,82 +1,81 @@
 $( document ).ready(function() {
     console.log( "ready!" );
 
-// User Story
-// AS AN employee with a busy schedule
-// I WANT to add important events to a daily planner
-// SO THAT I can manage my time effectively
-
-// Acceptance Criteria
-// GIVEN I am using a daily planner to create a schedule
-// WHEN I open the planner
-// THEN the current day is displayed at the top of the calendar
-
 // Display today's date & time in jumbotron
 $("#date").text("Today is " + (moment().format('dddd, MMMM Do YYYY')));
-$("#current-time").text((moment().format('h:mm:ss a')));
+$("#current-time").text((moment().format('h:mm a')));
 
 var update = setInterval( function(){
     date = moment(new Date());
-    $("#current-time").text((moment().format('h:mm:ss a')));
+    $("#current-time").text((moment().format('h:mm a')));
 
 }, 1000)
 
   setInterval(update, 1000);
 
-// WHEN I scroll down
-// THEN I am presented with timeblocks for standard business hours
+// Current Time
+var todayDate = new Date(); 
+var currentTime = todayDate.getHours();
 
-// my object has hours 9am-5pm, To do input, save button
-// var plannerObj = [
-//     {
-//     time: ["9:00:00", "10:00:00", "11:00:00", "12:00:00", "1:00:00", "2:00:00", "3:00:00", "4:00:00", "5:00:00"],
-//     activity: "",
-//     saveBtn: 
-//     }
+console.log(currentTime);
 
-    
-// ]
+// Timeblocks for standard business hours
 
-for ( var hour = 9; hour < 18; hour++) {
+for (var hour = 0; hour < 9; hour++) {
     var rowDiv = $("<div class='row'>");
-    rowDiv.attr("row-number", [hour]);
 
-    var colOne = $("<div class='col-sm-1'>");
-    var colTwo = $("<div class='col-sm-10'>");
-    var colThree = $("<div class = 'col-sm-2' + 'button'>");
-
-    $(".container").append(rowDiv);
+    var colOne = $("<div class= 'col-md-2'><p class= 'hour'>");
+    $(".hour").text("9am");
+    
+    var colTwo = $("<div class= 'col-md-8 justify-content-center' + 'taskInput'></div>");
+    var colThree = $("<div class = 'col-md-1'><p class='button'>");
+    
     rowDiv.append(colOne, colTwo, colThree);
+    $(".container").append(rowDiv);
+
 }
 
+var saveBtn = $("<button class='save-btn'>Save</button>");
+$(".button").append(saveBtn);
+
+var toDoInput = $("<input class='todo-input' id='input'>");
+$(".col-md-8").append(toDoInput);
+
+if (hour < currentTime) {
+    taskInput.attr("style", "background-color: pink;");
+}
+if (hour = currentTime) {
+    taskInput.attr("style", "background-color: #94A1B3");
+}
 //
 
-var saveBtn = $("<button class='save-btn'>Save Button</button>");
-$(".col-sm-2").append(saveBtn);
+// // Appending lables from 6:00AM to 12:00AM
+// for (var tAM = 0; tAM < 12; tAM++) {
+//     //Appends labels and input from 1:00AM to 11:00AM
+//     plannerFormEL.append('<label class="timeLabel col-2" id="timeLabel' + [tAM] + '">' + [tAM] + ":00AM" + '</label>');
+//     plannerFormEL.append('<input class="taskInput col-8" id="input' + [tAM] + '">' + '</input>');
+//     plannerFormEL.append('<i style="font-size: 1.25em;" class="far" id="i' + [tAM] + '">' + '</i>' + '<br>');
 
-
-
-// var toDoInput = $("<div id = 'input-form'>");
-// var inputArea = $("<div id = 'todo-input'>Input input input</div>");
-
-// $("#input-form").append(inputArea);
-// $(".col-sm-10").append(toDoInput);
-
-// for loop to dynamically create activity row, with time col-1, activity col-9, savebutton col-2
-// needs to loop through time array 9am-5pm to put in 1st col of each row
-// needs to put blank activity col in each row
-// needs to put save task button in col in each row
-
-// var
+//     var taskInput = $('.taskInput'); 
+//     if (tAM < curHour) {
+//         taskInput.attr('style', 'color: black; background-color: lightpink;');
+//     }
+//     console.log("Current Hour: " + curHour);
+//     console.log("Time Options are: " + tAM);
+// }
 
 // WHEN I view the timeblocks for that day
 // THEN each timeblock is color coded to indicate whether it is in the past, present, or future
+
 // WHEN I click into a timeblock
 // THEN I can enter an event
+
 // WHEN I click the save button for that timeblock
 // THEN the text for that event is saved in local storage
+
 // WHEN I refresh the page
 // THEN the saved events persist
 
 
 });
+
