@@ -19,15 +19,30 @@ var currentTime = todayDate.getHours();
 
 console.log(currentTime);
 
-// Timeblocks for standard business hours
+console.log(moment.duration().asHours());
 
-for (var hour = 0; hour < 9; hour++) {
+// Timeblocks for standard business hours
+var hoursArray = [];
+
+for (let hour = 9; hour < 10; hour++) {
+    hoursArray.push(moment({ hour }).format('h:mm a'));
+    hoursArray.push(
+        moment({
+            hour: 1
+        }).format('h:mm a')
+    );
+}
+
+console.log(hoursArray);
+
+for (i = 0; i < 9; i++) {
     var rowDiv = $("<div class='row'>");
 
-    var colOne = $("<div class= 'col-md-2'><p class= 'hour'>");
-    $(".hour").text("9am");
-    
+    var colOne = $("<div class= 'col-md-2'><p class='hourLabel'>");
+    $(".hourLabel").text(hoursArray);
+
     var colTwo = $("<div class= 'col-md-8 justify-content-center' + 'taskInput'></div>");
+
     var colThree = $("<div class = 'col-md-1'><p class='button'>");
     
     rowDiv.append(colOne, colTwo, colThree);
@@ -35,34 +50,20 @@ for (var hour = 0; hour < 9; hour++) {
 
 }
 
-var saveBtn = $("<button class='save-btn'>Save</button>");
+var saveBtn = $("<button class='save-btn' id='save'>Save</button>");
 $(".button").append(saveBtn);
 
-var toDoInput = $("<input class='todo-input' id='input'>");
+var toDoInput = $("<input class='todo-input' id='inputID'>");
 $(".col-md-8").append(toDoInput);
 
-if (hour < currentTime) {
-    taskInput.attr("style", "background-color: pink;");
-}
-if (hour = currentTime) {
-    taskInput.attr("style", "background-color: #94A1B3");
-}
+// if (hour < currentTime) {
+//     taskInput.attr("style", "background-color: pink;");
+// }
+// if (hour = currentTime) {
+//     taskInput.attr("style", "background-color: #94A1B3");
+// }
 //
 
-// // Appending lables from 6:00AM to 12:00AM
-// for (var tAM = 0; tAM < 12; tAM++) {
-//     //Appends labels and input from 1:00AM to 11:00AM
-//     plannerFormEL.append('<label class="timeLabel col-2" id="timeLabel' + [tAM] + '">' + [tAM] + ":00AM" + '</label>');
-//     plannerFormEL.append('<input class="taskInput col-8" id="input' + [tAM] + '">' + '</input>');
-//     plannerFormEL.append('<i style="font-size: 1.25em;" class="far" id="i' + [tAM] + '">' + '</i>' + '<br>');
-
-//     var taskInput = $('.taskInput'); 
-//     if (tAM < curHour) {
-//         taskInput.attr('style', 'color: black; background-color: lightpink;');
-//     }
-//     console.log("Current Hour: " + curHour);
-//     console.log("Time Options are: " + tAM);
-// }
 
 // WHEN I view the timeblocks for that day
 // THEN each timeblock is color coded to indicate whether it is in the past, present, or future
@@ -72,6 +73,36 @@ if (hour = currentTime) {
 
 // WHEN I click the save button for that timeblock
 // THEN the text for that event is saved in local storage
+
+var toDoInputField = $("#inputID");
+var saveButton = $("#save");
+
+renderLastSaved();
+
+function renderLastSaved() {
+    var toDoField = localStorage.getItem("text");
+    
+    if (!toDoField) {
+        return;
+    }
+    
+    toDoInputField.textContent = text;
+}
+
+saveButton.on("click", function () {
+    event.preventDefault();
+
+    var text = $("MAKE INDIVIDUAL IDS FOR EACH INPUT FIELD?").value;
+
+    if (text ==="") {
+        return;
+    } else {
+        animate button function?
+
+        localStorage.setItem("text", );
+        renderLastSaved;
+    }
+});
 
 // WHEN I refresh the page
 // THEN the saved events persist

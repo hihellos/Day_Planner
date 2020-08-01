@@ -1,0 +1,17 @@
+.jumbotron {
+    padding: 2%;
+    background-color: transparent;
+    background-image: linear-gradient(to bottom, #D4DEED, white, white);
+}
+
+#input {
+    width: 100%;
+    padding-right: 1px;
+    padding-left: 1px;
+}
+
+.button {
+    padding-right: 1px;
+    padding-left: 1px;
+}
+
