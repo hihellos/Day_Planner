@@ -25,3 +25,15 @@ input {
     margin-top: 12px;
 
 }
+
+.past{
+    background-color: #E7C7C5;
+}
+
+.present {
+    background-color: #FDF7EC;
+}
+
+.future {
+    background-color: #DDE4E0;
+}
