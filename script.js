@@ -1,6 +1,8 @@
 $( document ).ready(function() {
     console.log( "ready!" );
 
+// var setBoxes = localStorage.getItem("text")
+
 // Display today's date & time in jumbotron
 $("#date").text("Today is " + (moment().format('dddd, MMMM Do YYYY')));
 $("#current-time").text((moment().format('h:mm a')));
@@ -10,60 +12,44 @@ var update = setInterval( function(){
     $("#current-time").text((moment().format('h:mm a')));
 
 }, 1000)
-
 setInterval(update, 1000);
 
 var userInputField = $("#dataTime")
 renderLastSaved();
-convertHour();
 
 // Current Time
 var todayDate = new Date(); 
 var currentTime = todayDate.getHours();
 
 console.log("current time: " + currentTime);
-console.log(moment('9:00', "h:mm"));
+console.log(parseInt(moment().format('h')));
 
-function convertHour() {
-    $('div[class="col-md-2"]').each(function() {
-        var timeNow = parseInt(currentTime.format("HHmm"));
-        console.log(timeNow);
-        var indexOfRow = parseInt(timeIndex);
-        console.log(indexOfRow);
-
-        if (timeNow < indexOfRow) {
-            $(".col-md-8").attr("style", "background-color: #94A1B3;");
-        }
-    });
-}
-
-for (var hour = 7; hour < 24; hour++) {
+// Loop to create rows, with 3 columns for each time, task input, and save button
+for (var hour = 7; hour < 20; hour++) {
     var rowDiv = $("<div class='row'>")
 
-    
     var colOne = $("<div class= 'col-md-2'><p class='hourLabel'>")
+    var colTwo = $("<div class= 'col-md-8 justify-content-center'>").attr("value", [hour]);
+    var colThree = $("<div class = 'col-md-1'><p class='button'>");
+    
     if (hour <= 12) {
         colOne.text([hour] + ":00 am");
-        // if (hour < currentTime) {
-            
-        // } 
-    } 
+        } 
     if (hour === 12) {
         colOne.text([hour] + ":00 pm");
-        if (colOne.text === currentTime) {
-            $(".col-md-8").attr("style", "background-color: #FDF7EC");
-        }
     }
     if (hour > 12) {
         colOne.text([hour]-12 + ":00 pm");
-        // if (hour > currentTime) {
-        //     $(".col-md-8").attr("style", "background-color: #DDE4E0");
-        // }
     }
-    
-    var colTwo = $("<div class= 'col-md-8 justify-content-center'>")
-    
-    var colThree = $("<div class = 'col-md-1'><p class='button'>");
+        if ((parseInt(moment().format('h'))) <= hour + 12) {
+            $(".col-md-8").attr("style", "background-color: #94A1B3");
+        }
+        if ((parseInt(moment().format('h'))) == hour + 12) {
+            $(".col-md-8").attr("style", "background-color: #FDF7EC");
+        }
+        if ((parseInt(moment().format('h'))) > hour + 12) {
+            $(".col-md-8").attr("style", "background-color: #DDE4E0");
+        }
     
     rowDiv.append(colOne, colTwo, colThree);
     $(".container").append(rowDiv);
@@ -95,6 +81,9 @@ function renderLastSaved() {
 
 // console.log(text);
 }
+
+var rowValue = $("")
+$(".col-md-2")
 
 // Click button to save
 $(".save-btn").on("click", function(event) {
