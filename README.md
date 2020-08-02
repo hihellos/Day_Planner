@@ -13,7 +13,7 @@
 
 ## About This Project <a name="about"></a>
 
-Click to enter tasks for each hour of the work day. The input will be saved to local storage, should the user close out of or lose ther webpage. The time blocks are color coded to highlight the current hour, and to represent time that has passed, and availble hours left in the day. 
+Click to enter tasks for each hour of the work day. The input will be saved to local storage, should the user close out of or lose ther webpage. The time blocks are color coded to highlight the current hour, and to represent time that has passed, and    availble hours left in the day. 
 
 ## Languages Used <a name="laguages"></a>
 
