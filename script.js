@@ -101,6 +101,38 @@ $(".save-btn").on("click", function(event) {
     //     localStorage.setItem("item", text);
     //     renderLastSaved();
     // }
+
+// Manoli class
+
+$(".saveBtn").on("click", function(){
+    // set a variable to get values from text area and times
+    var value = $(this).siblings(".reservation").val();
+    var time = $(this).parent().attr("id");
+
+    localStorage.setItem(time,value);
+
+});
+
+$("#hr-9 .reservation").val(localStorage.getItem("hr-9"));
+
+function hourUpdate (){
+    var currentTime = today.getHours();
+    $(".timeslot").each(function() {
+        var blockTime = parseInt($(this).attr("id").split("-")[1]);
+        if (blockTime < currentTime) {
+            $(this).addClass("past")
+        } else
+        if (blockTime === currentTime) {
+            $(this).removeClass("past").addClass("present")
+        }
+        else {$(this).removeClass("past", "present").addClass("future");
+        }
+    });
+    
+}
+
+
+
 });
 });
 
