@@ -25,6 +25,7 @@ console.log("current time: " + currentTime);
 console.log(parseInt(moment().format('h')));
 
 // Loop to create rows, with 3 columns for each time, task input, and save button
+// Each timeblock is color coded to indicate whether it is in the past, present, or future
 for (var hour = 7; hour < 20; hour++) {
     var rowDiv = $("<div class='row'>")
 
@@ -42,7 +43,7 @@ for (var hour = 7; hour < 20; hour++) {
         colOne.text([hour]-12 + ":00 pm");
     }
         if ((parseInt(moment().format('h'))) <= hour + 12) {
-            $(".col-md-8").attr("style", "background-color: #94A1B3");
+            $(".col-md-8").attr("style", "background-color: #E7C7C5");
         }
         if ((parseInt(moment().format('h'))) == hour + 12) {
             $(".col-md-8").attr("style", "background-color: #FDF7EC");
@@ -62,11 +63,7 @@ $(".button").append(saveBtn);
 var toDoInput = $("<input class='todo-input' id='taskEntered'>").attr("type", "text");
 $(".col-md-8").append(toDoInput);
 
-// Each timeblock is color coded to indicate whether it is in the past, present, or future
-
 // The text for that event is saved in local storage, on page refresh the saved event persists
-
-
 function renderLastSaved() {
     $('input[type="text"]').each(function() {
         var id = $(this).attr('id');
@@ -75,9 +72,9 @@ function renderLastSaved() {
         $(this).val(value);
     });
 
-    //     var text = localStorage.getItem("item");
+// var text = localStorage.getItem("item");
     
-//     userInputField.textContent = text;
+// userInputField.textContent = text;
 
 // console.log(text);
 }

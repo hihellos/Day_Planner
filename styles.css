@@ -4,14 +4,24 @@
     background-image: linear-gradient(to bottom, #FBF0DA, white);
 }
 
-#input {
+input {
     width: 100%;
+    padding-top: 1px;
     padding-right: 1px;
     padding-left: 1px;
+    margin-top: 12px;
+}
+
+input {
 }
 
 .button {
     padding-right: 1px;
     padding-left: 1px;
+    margin-top: 15px;
 }
 
+.col-md-2 {
+    margin-top: 12px;
+
+}
