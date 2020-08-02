@@ -3,6 +3,8 @@
 
 <a href="https://hihellos.github.io/Day_Planner/" target="_blank">LINK to view project page.</a>
 
+<img src="assets/ScreenShot_DayPlanner.png" style="height:250px">
+
 ## Table of Contents
 1. [About this project](#about)
 2. [Languages Used](#laguages)
